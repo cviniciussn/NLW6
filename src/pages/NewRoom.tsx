@@ -49,26 +49,38 @@ export function NewRoom() {
             <main>
                 <div className='main-content'>
                     <img src={logo} alt="letmeask" />
-                    <h1>Bem vindo, {user?.name}!</h1>
+                    {user ? <h1>Bem vindo, {user?.name}!</h1> : <h2>Oops! Você não está logado, Jim :(</h2>}
 
-                    <h2>Criar uma nova sala</h2>
-                    <form onSubmit={handleCreateRoom}>
-                        <input
-                            type="text"
-                            placeholder="Nome da sala"
-                            onChange={event => setNewRoom(event.target.value)}
-                            value={newRoom}
-                        />
-                        <Button type='submit'>
-                            Criar sala
-                        </Button>
-                    </form>
-                    <p>
-                        Quer entrar em uma sala existente? <Link to="/"> clique aqui</Link>
-                    </p>
-                </div>
+                    {user ? <>
+                        <h2>Criar uma nova sala</h2>
+                        <form onSubmit={handleCreateRoom}>
+                            <input
+
+                                type="text"
+                                placeholder="Nome da sala"
+                                onChange={event => setNewRoom(event.target.value)}
+                                value={newRoom}
+                            />
+
+
+                            <Button
+                                type='submit'
+
+                            >
+                                Criar sala
+                            </Button>
+
+                        </form>
+                        </>
+                        :
+                        <></>
+                    }
+                        <p>
+                            Quer entrar em uma sala existente? <Link to="/"> clique aqui</Link>
+                        </p>
+                    </div>
             </main>
         </div>
 
-    )
+            )
 }

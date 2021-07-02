@@ -48,6 +48,11 @@ export function Home() {
             return
         }
 
+        if (roomRef.val().endedAt){
+            alert("Esta sala já está encerrada")
+            return
+        }
+
         history.push(`/rooms/${roomCode}`)
 
 
